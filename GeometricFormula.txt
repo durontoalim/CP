@@ -1,0 +1,265 @@
+List of Geometry Formulas
+Below is the list of various geometry formulas for you according to the geometric shape.
+Perimeter of a Square = 4(Side)
+Perimeter of a Rectangle = 2(Length + Breadth)
+Area of a Square = Side2
+Area of a Rectangle = Length × Breadth
+Area of a Triangle = ½ × base × height
+Area of a Trapezoid = ½ × (base1+base2)× height
+
+Basic geometry formulas where the mathematical constant π is used are,
+
+Area of a Circle = A = π×r2 
+Circumference of a Circle = 2πr
+The curved surface area of a Cylinder  = 2πrh
+Total surface area of a Cylinder = 2πr(r + h)
+Volume of a Cylinder = V = πr2h
+The curved surface area of a cone =  πrl
+Total surface area of a cone = πr(r+l) = πr[r+√(h2+r2)]
+Volume of a Cone = V = ⅓×πr2h
+Surface Area of a Sphere = S = 4πr2
+Volume of a Sphere = V = 4/3×πr3
+where,
+
+r = Radius;
+h = Height. and,
+l = Slant height
+The formula table depicts the geometry formulas used for different 2-D and 3-D shapes:
+
+SHAPES	FORMULAS
+1. Right Triangle	
+Pythagoras Theorem: a2 + b2 = c2
+
+Area = ½ ab
+
+Perimeter = a + b + √(a2 + b2)
+
+Where,
+c = hypotenuse of a triangle
+
+a = altitude of a triangle
+
+b = base of a triangle
+
+2. Triangle	
+Perimeter, P = a + b + c
+
+Area, A = ½ bh
+
+Height, h = 2(A/b)
+
+Where,
+
+a,b,c are the sides of a triangle.
+
+3. Rectangle	
+Perimeter = 2(l + w)
+
+Area = lw
+
+Diagonal, d = √(l2 + w2)
+
+Where,
+
+l = length of a rectangle
+
+w = width of a rectangle
+
+4.Parallelogram	
+Perimeter, P = 2(a + b)
+
+Area, A = bh
+
+Height, h = A/b
+
+Base, b = A/h
+
+Where,
+
+a and b are the sides of a parallelogram
+
+h = height of a parallelogram
+
+5. Trapezium	
+Area, A = ½(a + b)h
+
+Height, h = 2A/(a + b)
+
+Base, b = 2(A/h) – a
+
+Where,
+
+a and b are the parallel sides
+
+h = distance between two parallel sides
+
+6. Circle	
+Circumference = 2πr
+
+Area = πr2
+
+Diameter = 2r
+
+Where,
+
+r = radius of a circle
+
+7. Square	
+Perimeter, P = 4a
+
+Area, A = a2
+
+Diagonal, d = a√2
+
+Side, a = √A = d/2√2
+
+Where,
+
+a = side of a square
+
+8. Arc	
+Arc Length, L = rθ
+
+Area, A = ½r2θ
+
+Here, θ is the central angle is radians.
+
+Where,
+
+r = radius 
+
+9. Cube	
+Area, A = 6a2
+
+Volume, V = a3 
+
+Edge, a = V⅓
+
+Space diagonal = a√3
+
+Where,
+
+a = side of a cube
+
+10. Cuboid	
+Surface Area, A = 2(lb + bh + hl)
+
+Volume, V = lbh 
+
+Space diagonal, d = √( l2 + b2 +h2)
+
+Where,
+
+l= length
+
+b= breath
+
+h= height
+
+11. Cylinder	
+Total Surface Area, A = 2πrh + 2πr2
+
+Curved Surface Area, Ac = 2πrh
+
+Volume, V = πr2h
+
+Base Area, Ab = πr2
+
+Radius, r = √(V/πh)
+
+Where,
+
+r= radius of a cylinder
+
+h= height of a cylinder
+
+12. Cone	
+Total Surface Area, A = πr(r+l) = πr[r+√(h2+r2)]
+
+Curved Surface Area, Ac = πrl
+
+Volume, V = ⅓πr2h
+
+Slant Height, l = √(h2+r2)
+
+Base Area, Ab = πr2
+
+Where,
+
+r= radius of a cone
+
+h= height of a cone
+
+l = slant height
+
+13. Sphere	
+Surface Area, A = 4πr2
+
+Volume, V = ⁴⁄₃πr3
+
+Diameter = 2r
+
+Where,
+
+r= radius of a sphere
+
+
+
+Great learning in high school using simple cues
+Indulging in rote learning, you are likely to forget concepts. With Cuemath, you will learn visually and be surprised by the outcomes.
+Book a Free Trial Class
+
+Let's have a look at solved examples to understand geometry Formulas better.
+
+Solved Examples Using Geometry Formulas
+Example 1: Calculate the circumference and the area and of a circle by using geometry formulas if the radius of the circle is 21 units?
+
+Solution:
+
+To find the area and the circumference of the circle:
+
+Given: Radius of a circle = 21 units
+Using geometry formulas for circle,
+Area of circle = π×r2 
+= 3.142857 × 212
+= 1385.44
+Now for the circumference of the circle,
+Using geometry formulas for circle,
+Circumference of a Circle = 2πr
+= 2(3.142857)(21)
+= 131.95
+
+Answer: The area of a circle is 1385.44 sq. units and the circumference of a circle is 131.95 units.
+
+Example 2: What is the area of a rectangular park whose length and breadth are 60m and 90m respectively?
+
+Solution:
+To find the area of a rectangular park:
+
+Given: Length of the park = 60m
+
+The breadth of the park = 90m
+Using geometry formulas for rectangle,
+
+Area of Rectangle = (Length × Breadth)
+
+= (60 × 90) m2 
+
+= 5400 m2
+
+Answer: The area of the rectangular park is 5400 m2.
+
+Example 3: Using geometry formulas of the cube, calculate the surface area and volume of a cube whose edge is 6 units respectively?
+
+Solution:
+To Find: The surface area and volume of a cube whose edge is 6 units
+
+Using geometry formulas of cube,
+Surface area of cube is = A = 6a2
+A = 6 (6)2
+A = 6 × 36 = 216 units2
+Volume of a cube, V = a3
+V = (6)3
+V = 216 units3 
+
+Answer: The surface area of the cube is 216 units2. The volume of the cube is 216 units3

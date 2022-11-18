@@ -1,0 +1,68 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import static java.lang.System.out;
+
+class J {
+    public static void main(String[] args) {
+
+// Declaration:
+            Map< Integer, Integer > map = new HashMap<>();
+
+
+// put():
+            map.put( 10, 12 );
+            map.put( 123, 12 );
+            map.put( 1, 123 );
+            out.println( map ); //{1=123, 10=12, 123=12}
+            // This method is used to insert an entry in this map.
+
+
+// putAll():
+            Map < Integer, Integer > map1 = new HashMap<>();
+            map1.put( 2, 12 );
+            map1.put( 1, 12 );
+            map1.putAll( map );
+
+            out.println( map1 ); // {1=123, 2=12, 10=12, 123=12}
+
+            //This method is used to insert the specified map in this map.
+            // Notice in map1 1 = 12 and map 1 = 123 is inserted.
+            // After inserting map in map1, 1 = 123 in map1
+
+
+// remove():
+            map1.remove( 2 );
+            out.println( map1 ); // {1=123, 10=12, 123=12}
+
+            // This method is used to delete an entry for the specified key.
+
+
+// get():
+            out.println( map1.get( 10 ) ); // 12
+            // This method is used to return the value for the specified key.
+
+
+// containsKey()
+            out.println( map1.containsKey( 10 ) ); // true
+            // This return true if map contains the key
+
+
+// containsValue():
+            out.println( map1.containsValue( 12 ) ); // true
+            //  This return true if map contains the value
+
+
+// keySet():
+            Set< Integer > set = map1.keySet();
+            out.println( set ); // [1, 10, 123]
+            //This method is used to return the Set view containing all the keys.
+
+
+// entrySet():
+            Set< Map.Entry< Integer,Integer> > st = map1.entrySet();
+            out.println( st );//[1=123, 10=12, 123=12]
+            // This method is used to return the Set view containing all the keys and values.
+        }
+}

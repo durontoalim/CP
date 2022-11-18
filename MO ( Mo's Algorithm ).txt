@@ -1,0 +1,60 @@
+const int mx = 1e5+123;
+int a[mx], ans[mx], cur_ans = 0;
+
+struct Query {
+    int x, y, id, block;
+}q[mx];
+
+inline bool cmp ( const Query &a, const Query &b )
+{
+    if ( a.block != b.block ) return a.block < b.block;
+    return a.y < b.y;
+}
+
+inline void add ( int val )
+{
+    cur_ans += val;
+}
+
+inline void remove( int val )
+{
+    cur_ans -= val;
+}
+
+int main()
+{
+    optimize();
+
+    int n, m, x, y;
+
+    cin >> n >> m;
+
+    for ( int i = 0; i < n; i++ ) cin >> a[i];
+    int len = sqrt ( n );
+
+    for ( int i = 0; i < m; i++ ) {
+        cin >> x >> y;
+        q[i].x = x, q[i].y = y, q[i].id = i, q[i].block = x / len;
+    }
+
+    sort ( q, q+m, cmp );
+
+    int cur_l = 0, cur_r = -1;
+
+    for ( int i = 0; i < m; i++ ) {
+        int l = q[i].x, r = q[i].y;
+
+        while ( cur_l < l ) remove ( a[cur_l++] );
+        while ( cur_l > l ) add ( a[--cur_l] );
+
+        while ( cur_r < r ) add( a[++cur_r] );
+        while ( cur_r > r ) remove( a[cur_r--] );
+
+
+        ans[q[i].id] = cur_ans;
+    }
+
+    for ( int i = 0; i < m; i++ ) cout << ans[i] << endl;
+
+    return 0;
+}

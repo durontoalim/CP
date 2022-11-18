@@ -1,0 +1,33 @@
+import java.util.Stack;
+
+import static java.lang.System.out;
+
+class J {
+    public static void main(String[] args) {
+
+// Declaration:
+            Stack<Integer> stack = new Stack<>();
+
+
+// push():
+            stack.push(10);
+            stack.push(11);
+
+// search():
+            out.println(stack.search(11)); // 2
+            // returns index number of a element.
+            // returns -1 if the element is not found
+            // 1 based index
+
+
+// empty() && peek() && top():
+            while (!stack.empty()) {
+                out.println(stack.peek());
+                stack.pop();
+            }
+            // empty() return true if stack is empty
+            // peek() peeks top element of stack
+            // pop() deletes top element of stack
+
+        }
+}

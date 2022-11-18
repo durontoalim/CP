@@ -1,0 +1,52 @@
+const int mx = 1e5+123;
+int P[mx][30], parent[mx], level[mx];
+
+inline void dfs_for_LCA ( int u, int lev )
+{
+    level[u] = lev;
+    for ( auto v : adj[u] ) {
+        if ( v != parent[u] ) {
+            parent[v] = u;
+            dfs_for_LCA( v, lev+1 );
+        }
+    }
+}
+
+inline void preprocess ( int n )
+{
+    mem ( P, -1 );
+
+    for ( int i = 1; i <= n; i++ ) P[i][0] = parent[i];
+
+    for ( int j = 0; ( 1 << j ) <= n; j++ ) {
+        for ( int i = 1; i <= n; i++ ) {
+            if ( P[i][j-1] != -1 ) {
+                P[i][j] = P[P[i][j-1]][j-1];
+            }
+        }
+    }
+}
+
+inline int LCA ( int u, int v )
+{
+    if ( level[u] < level[v] ) swap ( u, v );
+    int dist = level[u] - level[v];
+
+    while ( dist > 0 ) {
+        int rise = log2( dist );
+        u = P[u][rise];
+        dist -= ( 1 << rise );
+
+    }
+
+    if ( u == v ) return u;
+
+    for ( int j = 20; j >= 0; j-- ) {
+        if ( P[u][j] != P[v][j] && P[u][j] != -1 ) {
+            u = P[u][j];
+            v = P[v][j];
+        }
+    }
+
+    return parent[u];
+}

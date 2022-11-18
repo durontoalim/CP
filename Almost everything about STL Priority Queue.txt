@@ -1,0 +1,81 @@
+///   ***   ---   |||		 In the name of ALLAH		|||   ---   ***   ///
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+
+	priority_queue<int> q;
+
+	q.push ( 2 );
+	q.push ( 4 );
+	q.push ( 1 );
+
+	cout << q.top() << endl; /// 4
+	q.pop();
+	cout << q.top() << endl; /// 2
+	q.pop();
+
+	q.push( 1 );
+	q.push( 5 );
+	q.push( 4 );
+	q.push( 4 );
+
+	while ( !q.empty() ) {
+		cout << q.top() << " "; /// 5 4 4 1 1
+		q.pop();
+	}
+
+	cout << endl;
+
+	cout << q.size() << endl; /// 0
+
+	priority_queue<int, vector<int>, greater<int>> qr;
+
+	qr.push ( 2 );
+	qr.push ( 4 );
+	qr.push ( 1 );
+
+	cout << qr.top() << endl; /// 1
+	qr.pop();
+	cout << qr.top() << endl; /// 2
+	qr.pop();
+
+	qr.push( 1 );
+	qr.push( 5 );
+	qr.push( 4 );
+	qr.push( 4 );
+
+	while ( !qr.empty() ) {
+		cout << qr.top() << " "; /// 1 4 4 4 5
+		qr.pop();
+	}
+	cout << endl;
+
+	cout << qr.size() << endl; /// 0
+
+
+
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

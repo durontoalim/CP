@@ -1,0 +1,60 @@
+
+
+///   ***   ---   |||   Debugger   |||   ---   ***   ///
+
+
+
+template < typename F, typename S >
+void faltu ( pair < F, S > p ) { cerr << "(" << p.first << ", " << p.second << ")"; }
+
+template < typename T >
+void faltu( vector < T > v ) { cerr << "{";
+    for ( auto it = v.begin(); it != v.end(); ++it) { if ( it != v.begin() ) cerr << ", "; cerr << *it; }
+    cerr << "}";
+}
+
+template < typename T >
+void faltu( set < T > v ) { cerr << "{";
+    for ( auto it = v.begin(); it != v.end(); ++it) { if ( it != v.begin() ) cerr << ", "; cerr << *it; }
+    cerr << "}";
+}
+
+template < typename T >
+void faltu( multiset < T > v ) { cerr << "{";
+    for ( auto it = v.begin(); it != v.end(); ++it) { if ( it != v.begin() ) cerr << ", "; cerr << *it; }
+    cerr << "}";
+}
+
+template < typename F, typename S >
+void faltu ( map < F, S > v ) { cerr << "[";
+    for(auto it = v.begin(); it != v.end(); ++it) { if( it != v.begin() ) cerr << ", "; cerr << it -> first << " = " << it -> second ; }
+    cerr << "]";
+}
+
+template < typename F, typename S >
+void faltu ( unordered_map < F, S > v ) { cerr << "[";
+    for(auto it = v.begin(); it != v.end(); ++it) { if( it != v.begin() ) cerr << ", "; cerr << it -> first << " = " << it -> second ; }
+    cerr << "]";
+}
+
+template < typename T >
+void faltu ( stack < T > v ) { cerr << "{"; while ( !v.empty() ) { cerr << v.top(); v.pop(); if ( !v.empty() ) cerr << ", "; } cerr << "}";}
+
+template < typename T >
+void faltu ( queue < T > v ) {cerr << "{";while ( !v.empty() ) { cerr << v.front(); v.pop(); if ( !v.empty() ) cerr << ", "; } cerr << "}";}
+
+template < typename T >
+void faltu ( priority_queue < T > v ) {cerr << "{";
+    while( !v.empty() ) { cerr << v.front(); v.pop(); if ( !v.empty() ) cerr << ", "; } cerr << "}";
+}
+
+
+#define dbg(args...) do {cerr << #args << " : "; faltu(args); } while(0)
+
+void faltu () { cerr << endl; }
+
+template <typename T>
+void faltu( T a[], int n ) { for(int i = 0; i < n; ++i) cerr << a[i] << ' '; cerr << endl; }
+
+template <typename T, typename ... hello>
+void faltu( T arg, const hello &... rest) { cerr << arg << ' '; faltu(rest...); }

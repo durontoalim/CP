@@ -1,0 +1,17 @@
+struct info {
+    int mask, node, cost;
+};
+
+
+struct cmp_s {
+    bool operator()( info &a, info &b ) {
+        return a.cost > b.cost;
+    }
+};
+
+
+int main()
+{
+    priority_queue < info, vector < info >, cmp_s > q;
+	// Sort decreasing order of cost;
+}

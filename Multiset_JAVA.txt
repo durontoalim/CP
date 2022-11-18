@@ -1,0 +1,25 @@
+import java.util.HashSet;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import static java.lang.System.out;
+
+class J {
+    public static void main(String[] args) {
+
+        HashSet< Integer > st = new HashSet<>();
+        SortedSet< Integer > s = new TreeSet<>( (i, j) -> i < j ? 1 : -1 );
+
+        st.add( 1 );
+        st.add( 1 );
+
+        out.println( st ); // [1]
+
+        s.add( 1 );
+        s.add( 1 );
+
+        out.println( s ); // [1, 1]
+        // s is multiset
+
+    }
+}

@@ -1,0 +1,20 @@
+
+#include <ext/pb_ds/assoc_container.hpp>
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+using namespace std;
+using namespace __gnu_pbds;
+
+typedef tree< ll, null_type, less_equal<ll>, rb_tree_tag, tree_order_statistics_node_update > ordered_set;
+
+void erase ( ordered_set &s, ll val )
+{
+    auto it = s.upper_bound(val);
+
+    if ( it == s.begin() && val == *s.begin() ) s.erase ( s.upper_bound(val) );
+    else s.erase ( s.upper_bound(val) );
+}
+
+/// cout<<*X.find_by_order(1)<<endl; // iterator to the k-th largest element
+/// cout<<X.order_of_key(-5)<<endl;  // number of items in a set that are strictly smaller than our item

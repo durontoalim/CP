@@ -1,0 +1,21 @@
+const int mx = 2e5+123;
+int t[mx];
+
+void upd ( int id, int x )
+{
+    while ( id <= n ) {
+        t[id] += x;
+        id += ( id & -id );
+    }
+}
+
+int ask ( int id )
+{
+    int ret = 0;
+    while ( id > 0 ) {
+        ret += t[id];
+        id -= ( id & -id );
+    }
+
+    return ret;
+}

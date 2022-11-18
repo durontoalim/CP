@@ -1,0 +1,49 @@
+set number
+set guifont=Consolas:h12
+set tabstop=5
+set shiftwidth=5
+set mouse=a
+set smartcase
+
+cd S:\co
+
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
+inoremap ( ()<Esc>i
+inoremap { {}<Esc>i
+inoremap {<CR> {<CR>}<Esc>O
+inoremap [ []<Esc>i
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
+
+
+autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++14 % -o %:r -Wl,--stack,268435456<CR>
+autocmd filetype cpp nnoremap <F10> :!%:r<CR>
+
+if v:progname =~? "evim"
+  finish
+endif
+source $VIMRUNTIME/defaults.vim
+
+if has("vms")
+  set nobackup		
+else
+  set backup	
+  if has('persistent_undo')
+    set undofile	
+endif
+endif
+
+if &t_Co > 2 || has("gui_running")
+  set hlsearch
+endif
+
+augroup vimrcEx
+  au!
+
+  autocmd FileType text setlocal textwidth=78
+augroup END
+if has('syntax') && has('eval')
+  packadd! matchit
+endif

@@ -1,0 +1,52 @@
+const int mx = 1e2+12;
+int cost[mx][mx], level[mx], s, t, par[mx], d;
+vi adj[mx];
+
+
+int bfs ( )
+{
+    mem ( par, -1 );
+    queue < pii > q;
+    q.push( {s, inf} );
+
+    while ( !q.empty() ) {
+
+        pii u = q.front();
+        q.pop();
+
+        for ( int i = 0; i < sz ( adj[u.F] ); i++ ) {
+
+            int v = adj[u.F][i];
+            if ( par[v] == -1 && cost[u.F][v] > 0 ) {
+                par[v] = u.F;
+                int min_cost = min ( u.S, cost[u.F][v] );
+
+                if ( v == t ) return min_cost;
+                q.push ( {v, min_cost} );
+            }
+        }
+
+    }
+
+    return 0;
+}
+
+int calc_maxFlow ()
+{
+    int max_flow = 0, new_flow = 0;
+
+    while ( new_flow = bfs () ) {
+
+        max_flow += new_flow ;
+        int cur = t;
+
+        while ( cur != s ) {
+            cost[cur][par[cur]] += new_flow;
+            cost[par[cur]][cur] -= new_flow;
+            cur = par[cur];
+        }
+
+    }
+
+    return max_flow;
+}

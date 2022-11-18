@@ -1,0 +1,64 @@
+const int mx = 1e5+123;
+vi adj[mx];
+int sz[mx], ans[mx];
+bitset < mx > markCentroid;
+
+inline int dfs ( int u, int p )
+{
+    sz[u] = 1;
+    for ( auto v : adj[u] ) {
+        if ( v != p && !markCentroid[v] ) sz[u] += dfs ( v, u );
+    }
+
+    return sz[u];
+}
+
+inline int getCentroid ( int u, int p, int n )
+{
+    bool done = 1;
+    if ( n - sz[u] > n >> 1 ) done = 0;
+    int mxx = -1, id = 0;
+
+    for ( auto v : adj[u] ) {
+        if ( sz[v] > n >> 1 && v != p && !markCentroid[v] ) done = 0;
+        if ( sz[v] > mxx && v != p && !markCentroid[v] ) {
+            mxx = sz[v];
+            id = v;
+        }
+    }
+
+    if ( done ) return u;
+    return getCentroid( id, u, n );
+}
+
+inline int Centroid ( int u )
+{
+    int n = dfs ( u, 0 );
+    return getCentroid( u, 0, n );
+}
+
+inline void centroidDecomposition( int root )
+{
+    int centroid = Centroid( root );
+    ans[centroid] = 0;
+    queue < int > cen;
+
+    cen.push ( centroid );
+    markCentroid [centroid] = 1;
+
+    while ( !cen.empty() ) {
+
+        centroid = cen.front();
+        cen.pop();
+
+        for ( auto v : adj[centroid] ) {
+            if ( !markCentroid[v] ) {
+                int ret = Centroid( v );
+                ans[ret] = 1 + ans[centroid];
+
+                markCentroid[ret] = 1;
+                cen.push ( ret );
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+
+int length_union ( vii v )
+{
+    int req_time = 0;
+    sort ( all ( v ) );
+    int lastr = 0;
+
+	for (auto s : v){
+
+		if (s.F <= lastr) {
+			req_time += max(0, s.S - lastr);
+			lastr = max(s.S, lastr);
+		}
+
+		else {
+			req_time += s.S - s.F + 1;
+			lastr = s.S;
+		}
+	}
+
+	return req_time;
+}

@@ -1,0 +1,67 @@
+struct xorSpaces {
+
+    int Rank, dim;
+    array < int, 20 > basis;
+
+    xorSpaces ()
+    {
+        Rank = 0, dim = 20;
+        fill( all ( basis ), 0 );
+    }
+
+
+
+    void addBasis ( int n )
+    {
+
+        for ( int i = dim-1; i >= 0; i-- ) {
+
+            if ( n & ( 1 << i ) ) {
+
+                if ( basis[i] == 0 ) {
+                    basis[i] = n;
+                    Rank++;
+                    break;
+                }
+
+                else {
+                    n ^= basis[i];
+                }
+
+            }
+
+        }
+
+    }
+
+
+    void addSpaces ( xorSpaces other )
+    {
+
+        if ( other.Rank == 0 ) return;
+        if ( Rank == 0 ) {
+            *this = other;
+            return;
+        }
+
+        for ( int i = dim-1; i >= 0; i-- ) {
+
+            if ( other.basis[i] ) addBasis( other.basis[i] );
+
+        }
+
+
+
+    }
+
+    int getMax ()
+    {
+        int ans = 0;
+        for ( int i = dim-1; i >= 0; i-- ) {
+            if ( basis[i] && ( ans & ( 1 << i ) ) == 0 ) ans ^= basis[i];
+        }
+
+        return ans;
+    }
+
+};

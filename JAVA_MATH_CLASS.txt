@@ -1,0 +1,254 @@
+//In the name of ALLAH
+
+class F {
+    public static void main(String[] args) {
+
+        long aL = 123455, bL = 1234566;
+        int aI = 123, bI = 345;
+        double aD = 123.34, bD = 345.67;
+        float aF = 12.34f, bF = 33.34f;
+
+        double POW = Math.pow(aD, bD);
+
+
+        long ABS = Math.abs(aL);
+
+
+        long MAX = Math.max(aL, bL);
+
+
+        long MIN = Math.min(aL, bL);
+
+
+        double k = Math.signum(aD);
+        // If aD > 0 then k = 1.0
+        // If aD < 0 then k = -1.0
+        // If aD == 0 then k = 0
+
+
+        double sq = Math.sqrt(aD);
+
+
+        int SUM = Math.addExact(aI, bI);
+        // If sum overflows then it will show exception
+
+
+        long SUML = Math.addExact(aL, bL);
+        // If sum overflows then it will show exception
+
+
+        double C = Math.ceil(aD);
+
+
+        double F = Math.floor(aD);
+
+
+        double R = Math.round(aD);
+
+
+        int dI = Math.decrementExact(aI);
+        // dI = --aI;
+
+
+        long dL = Math.decrementExact(aL);
+        // dL = --aL;
+
+
+        dI = Math.incrementExact(aI);
+        // dI = ++aI;
+
+
+        dL = Math.incrementExact(aL);
+        // dL = ++aL
+
+
+        int MULI = Math.multiplyExact(aI, bI);
+        long MULL = Math.multiplyExact(aL, bL);
+
+
+        int NEGI = Math.negateExact(aI);
+        long NEGL = Math.negateExact(aL);
+
+
+        int SUBI = Math.subtractExact(aI, bI);
+        long SUBL = Math.subtractExact(aL, bL);
+
+
+        int toINT = Math.toIntExact(aL);
+        // If aL won't fit in int then it will show exception
+
+
+        int MODI = Math.floorMod(aI, bI);
+        // MODI = aI mod bI;
+
+
+        long MODL = Math.floorMod(aL, bL);
+        // MODL = aL mod bL;
+
+
+        int DIVI = Math.floorDiv(aI, bI);
+        // DIVI = aI / bI;
+
+
+        long DIVL = Math.floorDiv(aL, bL);
+        // DIVL = aL / bL;
+
+
+        double Copy = Math.copySign(aD, bD);
+        // If bD is negative, then Copy = -abs (aD)
+        // If bD is positive, then Copy = abs (aD)
+
+
+        double E = Math.E;
+        //2.718281828459045
+        // This e. e base of log. ln = loge.
+
+
+        double PI = Math.PI;
+        //3.141592653589793
+
+
+        double DigreeV = 120, RadianV = 3.45;
+        double Radian = Math.toRadians(DigreeV);
+        // Radian = ( PI * DigreeV ) / 180;
+
+
+        double Digree = Math.toDegrees(RadianV);
+        // Digree = ( Radian * 180 ) / PI
+
+
+        double digree = 60, value;
+        value = Math.sin(Math.toRadians(digree));
+        // sin() takes para mitre radian.
+
+
+        value = Math.cos(Math.toRadians(digree));
+        // cos() takes para mitre radian.
+
+
+        value = Math.tan(Math.toRadians(digree));
+        // sin() takes para mitre radian.
+
+
+        double radian, val = 0.4;
+
+
+        radian = Math.asin(val);
+        // sin^-1(val), returns radian.
+        // We have to convert it in digree
+
+
+        radian = Math.acos(val);
+        // cos^-1(val), returns radian.
+        // We have to convert it in digree
+
+
+        radian = Math.atan(val);
+        // tan^-1(val), returns radian.
+        // We have to convert it in digree
+
+
+        double X = 20, Y = 30;
+        double Theta = Math.atan2(X, Y);
+        // Theta = tan^-1 ( X / Y )
+        // It works in radian
+
+
+        double a = 12;
+        double sinh = Math.sinh(a);
+        // sinh (a) = ( e^a - e^-a ) / 2;
+
+
+        double cosh = Math.cosh(a);
+        // cosh (a) = ( e^a + e^-a ) / 2;
+
+
+        double tanh = Math.tanh(a);
+        // tanh (a) = sinh(a) / cosh(a)
+
+
+        double x = 12;
+        double LOG1 = Math.log(x);
+        // LOG1 = ln(x)
+
+
+        double LOG2 = Math.log1p(x);
+        // LOG2 = ln (x + 1)
+
+
+        double LOG3 = Math.log10(x);
+        // LOG3 = log10(x)
+
+
+        double NEXT1 = Math.nextDown(x);
+        // Goes to next  down double value.
+        // If x = 12, then NEXT1 = 11.999999
+
+
+        double NEXT2 = Math.nextUp(x);
+        // Goes to next up double value.
+        // If x = 12, then NEXT1 = 12.000001
+
+
+        double QiubRoot = Math.cbrt(val);
+        // QiubRoot = val ^ ( 1 / 3 )
+
+
+        double EXP = Math.exp(val);
+        // EXP = e^val
+
+
+        double EXMP1 = Math.expm1(a);
+        // EXMP1 = (e^a) - 1
+
+
+        x = 12;
+        double y = 13;
+        double Hypot = Math.hypot(x, y);
+        // Hypot = sqrt ( x*x + y*y )
+
+        double After = Math.nextAfter(x, y);
+        // returns the floating-point number adjacent to the first argument
+        // in the direction of the second argument.
+        // If both arguments are equal then the second argument is returned.
+        // Direction meas if x < y nextUp(x) , if x > y nextDown(x)
+
+
+        double EEE = Math.IEEEremainder(x, y);
+        // The remainder value is mathematically equal to f1 – f2 x n,
+        // where n is the mathematical integer closest to the exact mathematical
+        // value of the quotient f1/f2, and if two mathematical integers are equally
+        // close to f1/f2, then n is the integer that is even.
+
+
+        double A = 12;
+        int p = 3;
+        double SCAL = Math.scalb(A, p);
+        // SCAL = A * ( 2^p)
+
+        double ULP = Math.ulp(123.3);
+        // returns the size of an ulp of the argument.
+        // An ulp stands for unit of least precision.
+        // It calculates the distance between the given double or float value and the
+        // double or float value next larger in magnitude.
+
+        int max = 10;
+        int min = 1;
+        int range = max - min + 1;
+
+        // generate random numbers within 1 to 10
+        for (int i = 0; i < 10; i++) {
+            int rand = (int) (Math.random() * range) + min;
+
+            // Output is different everytime this code is executed
+            System.out.println(rand);
+        }
+
+
+        double RINT = Math.rint(123.45);
+        // rint() is an inbuilt method in Java which is used to round of
+        // the floating-point argument to an integer value (in floating-point format).
+        // Same as round()
+    }
+
+}

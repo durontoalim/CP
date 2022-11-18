@@ -1,0 +1,88 @@
+import java.util.Comparator;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import static java.lang.System.out;
+
+class H {
+    public static void main(String[] args) {
+
+            /* SortedSet also has all methods of ArrayList */
+
+// declaration:
+            SortedSet< Integer > st = new TreeSet<>();
+
+
+// add():
+            st.add( 1 );
+            st.add( 2 );
+            st.add( 3 );
+            st.add( 2 );
+
+            out.println( st ); // [1, 2, 3]
+            // add() insert an element in the set.
+
+
+// first():
+            out.println( st.first() ); // 1
+            // Returns the first (lowest) element currently in this set.
+
+
+// last():
+            out.println ( st.last() ); // 3
+            // Returns the last (highest) element currently in this set.
+
+
+// headSet():
+            SortedSet < Integer > tmp = new TreeSet<>();
+            tmp = st.headSet(3);
+            out.println( tmp ); // [1, 2]
+            // Returns a view of the portion of this set whose
+            // elements are strictly less than to Element.
+
+
+// tailSet():
+            SortedSet < Integer > tmp1 = new TreeSet<>();
+            tmp1 = st.tailSet(2);
+            out.println( tmp1 ); // [2, 3]
+            // Returns a view of the portion of this set whose
+            // elements are strictly greater than or equal to Element.
+
+
+// findIndex():
+            int index = st.headSet(3).size();
+            out.println( index ); // 2
+            // Finding index of an element of the set.
+
+
+// subSet():
+            st.add (5);
+            st.add(10);
+            st.add(111);
+
+            out.println( st ); // [1, 2, 3, 5, 10, 111]
+            out.println( st.subSet( 5, 10 ) ); // [5]
+
+            //  Returns a view of the portion of this set whose
+            //  elements range from fromElement, inclusive, to toElement, exclusive.
+
+
+// Descending Order Set and Comparator():
+            SortedSet < Integer > st1 = new TreeSet<>(new Comparator<Integer>() {
+                @Override
+                public int compare(Integer o1, Integer o2) {
+                    return o2.compareTo(o1);
+                }
+            });
+
+            st1.add( 3 );
+            st1.add( 4 );
+            st1.add( 5 );
+
+            out.println( st1 ); // [5, 4, 3]
+
+            // This is how we make set in descending order
+
+
+        }
+}

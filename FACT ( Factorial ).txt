@@ -1,0 +1,18 @@
+
+int primeFactors ( int n )
+{
+    int sq = sqrt ( n ), cnt = 0;
+    for ( auto u : prime ) {
+        if ( u > sq || n == 0 ) break;
+        if( n % u != 0 ) continue;
+        while ( n % u == 0 && n != 0 ) {
+            n /= u;
+            
+        }
+        sq = sqrt(n);
+    }
+
+    if ( n > 1 );
+
+    return cnt;
+}

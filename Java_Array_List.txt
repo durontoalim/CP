@@ -1,0 +1,233 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.ListIterator;
+
+import static java.lang.System.out;
+
+class G {
+    public static void main(String[] args) {
+
+// Declaration:
+
+            // declaring initial size 123. We can keep that part empty.
+            ArrayList< Integer > v = new ArrayList<Integer>(123);
+
+
+// add():
+            v.add( 1 );// add() function Adds element in array list
+            v.add( 2 );
+            v.add( 3 );
+
+            out.println( v ); // Will print [1, 2, 3]
+
+            v.add( 2, 4 );
+            // This will insert v[2] = 4;
+
+            out.println( v ); // will print [1, 2, 4, 3]
+
+
+// get():
+            out.println( v.get( 2 ) ); // 3
+            //The get() method of ArrayList in Java is used to get
+            // the element of a specified index within the list.
+
+
+//set():
+            v.set( 2, 6 );
+            // Sets 6 in index 2. v[2] = 6
+            out.println( v ); // [1, 2, 6, 3]
+
+
+// remove():
+            v.remove(2);
+            // Removes index 2.
+            out.println( v ); // [1, 2, 3]
+
+
+// size():
+            out.println( v.size() );// 3
+
+
+// clear():
+            v.clear(); // clears the whole list.
+            out.println(v); // []
+
+            v.add( 1 );
+            v.add( 2 );
+            v.add( 3 );
+            v.add( 3 );
+
+
+// contains():
+            out.println( v.contains( 2 ) ); // true
+            //Returns true if this list contains the specified element
+
+
+// indexof():
+            out.println(v.indexOf( 3 )); // 2
+            out.println(v.indexOf( 10 )); // -1
+            //The index the first occurrence of a specific element is either returned,
+            // or -1 in case the element is not in the list.
+
+
+// isEmpty():
+            out.println(v.isEmpty()); // true
+            //Returns true if this list contains no elements.
+
+
+// lastIndexOf():
+            out.println ( v.lastIndexOf( 3 ) ); // 3
+            // The index the last occurrence of a specific element is either returned,
+            // or -1 in case the element is not in the list.
+
+
+// forEach():
+            v.forEach( (n) -> {
+                n *= 2;
+                n++;
+            });
+
+            v.forEach( n -> out.print ( n + " ") ); // 1 2 3 3
+            out.println();
+
+            // The forEach() method of ArrayList used to perform
+            // the certain operation for each element in ArrayList.
+            // But dosen't change the elements
+
+
+// retainAll():
+            ArrayList < String > bag = new ArrayList<>();
+            ArrayList < String > box = new ArrayList<>();
+
+            bag.add( "Paper" );
+            bag.add( "Pencil" );
+            bag.add( "Pen" );
+
+            box.add( "Paper" );
+            box.add( "Pen" );
+            box.add( "Clothes" );
+
+            box.retainAll( bag );
+            out.println(box); // [Paper, Pen]
+
+            //The retainAll() method of ArrayList is used to remove all
+            // the array list’s elements that are not contained in the specified collection
+
+
+// removeAll():
+            v.add ( 9 );
+            v.add ( 6 );
+            out.println(v); // [ 1, 2, 3, 3, 9, 6 ]
+
+            v.removeIf( n -> ( n % 3 == 0 && n != 3 ) );
+            out.println( v ); // [1 , 2, 3, 3 ]
+
+            //The removeIf() method of ArrayList is used to remove
+            // all of the elements of this ArrayList that satisfies a given
+            // predicate filter which is passed as a parameter to the method.
+
+
+// remove( obj ):
+            box.remove( "Paper" );
+            out.println(box); // [Pen]
+
+            //Removes the first occurrence of the specified element from this list, if it is present.
+
+
+// subList():
+            out.println( v.subList( 1, 4 ) ); // [2, 3, 3]
+            List< Integer > v1 = v.subList( 1, 4 );
+
+            //The subList() method of java.util.ArrayList class is used to return a view of
+            // the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive.
+            // (If fromIndex and toIndex are equal, the returned list is empty.)
+
+
+// ensureCapacity():
+            v.ensureCapacity( 500 );
+            //The ensureCapacity() method of java.util.ArrayList class increases the capacity
+            // of this ArrayList instance, if necessary, to ensure that it can hold at least
+            // the number of elements specified by the minimum capacity argument
+
+
+// listIterator():
+            ListIterator< Integer > it = v.listIterator();
+
+            while ( it.hasNext() ) {
+                out.print( it.next() + " " );
+            }
+            // 1 2 3 3
+
+            out.println();
+
+            // Returns a list iterator over the elements in this list (in proper sequence).
+
+
+// listIterator ( index ):
+            it = v.listIterator( 2 );
+
+            while ( it.hasNext() ) {
+                out.print( it.next() + " " );
+            }
+            // 3 3
+
+            out.println();
+
+            // Returns a list iterator over the elements in this list (in proper sequence),
+            // starting at the specified position in the list.
+
+
+// add() {Inserting}:
+            v.add ( 0, 2 );
+            v.add ( 0, 2 );
+            v.add ( 0, 2 );
+
+            out.println( v ); // [2, 2, 2, 1, 2, 3, 3]
+
+
+// trimToSize():
+            ArrayList < Integer > v2 = new ArrayList<>(12);
+            v2.add( 10 );
+            v2.add( 11 );
+            v2.add( 12 );
+            v2.trimToSize();
+
+            // This method is used to trim the capacity of the instance
+            // of the ArrayLis to the list’s current size.
+
+
+// addAll():
+            v.addAll( v2 );
+            out.println( v ); //[2, 2, 2, 1, 2, 3, 3, 10, 11, 12]
+
+            // This method is used to append all the elements from a specific
+            // collection to the end of the mentioned list, in such a order that the values are
+            // returned by the specified collection’s iterator.
+
+
+// addAll ( index ):
+            v.addAll( 1, v2 );
+            out.println(v); // [2, 10, 11, 12, 2, 2, 1, 2, 3, 3, 10, 11, 12]
+
+            //Used to insert all of the elements starting at the specified position
+            // from a specific collection into the mentioned list.
+        
+        
+// reverse():        
+            Collections.reverse( v );
+            out.println( v ); // [12, 11, 10, 3, 3, 2, 1, 2, 2, 12, 11, 10, 2]
+
+            // Reverses the list.
+
+        
+// sort():       
+            Collections.sort( v );
+            out.println( v ); // [1, 2, 2, 2, 2, 3, 3 10, 10, 11, 11, 12, 12]
+
+        
+// binarySearch():        
+            out.println( Collections.binarySearch( v, 1 ) );
+            //returns position of an object in a sorted list.
+    }
+}

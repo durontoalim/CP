@@ -1,0 +1,179 @@
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vi> vvi;
+typedef vector<vl> vvl;
+typedef pair<int,int> pii;
+typedef pair<double, double> pdd;
+typedef pair<ll, ll> pll;
+typedef vector<pii> vii;
+typedef vector<pll> vll;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+#define sz(x) (int)x.size()
+
+const double PI = acos(-1);
+const double eps = 1e-9;
+const int inf = 2000000000;
+const ll infLL = 9000000000000000000;
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define fraction() cout.unsetf(ios::floatfield); cout.precision(10); cout.setf(ios::fixed,ios::floatfield);
+#define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+
+#define dbg(args...) do {cerr << #args << " : "; faltu(args); } while(0)
+void faltu () {            cerr << endl;}
+template < typename T, typename ... hello>void faltu( T arg, const hello &... rest) {cerr << arg << ' ';faltu(rest...);}
+
+
+const int mx = 5e5+123;
+vi adj[mx];
+
+vi t[mx*3];
+int a[mx], iD[2*mx];
+vi nodes;
+bool vis[2*mx];
+
+
+void init ( int id, int b, int e )
+{
+    if ( b == e ) {
+        t[id].PB ( a[b] );
+        return;
+    }
+
+    int mid = ( b + e ) >> 1;
+
+    init ( id*2, b, mid );
+    init ( id*2+1, mid+1, e );
+
+    merge( all ( t[id*2] ), all ( t[id*2+1] ), back_inserter( t[id] ) );
+}
+
+
+void ask ( int id, int b, int e, int i, int j, int val )
+{
+    if ( b > j || e < i ) return;
+    if ( b >= i && e <= j ) {
+        int up = upper_bound( all ( t[id] ), val ) - t[id].begin();
+        for ( int i = up; i < sz ( t[id] ); i++ ) {
+            nodes.PB ( iD[t[id][i]] );
+        }
+        return;
+    }
+
+    int mid = ( b + e ) >> 1;
+
+    ask ( id*2, b, mid, i, j, val );
+    ask ( id*2+1, mid+1, e, i, j, val );
+}
+
+struct info {
+    int x, y, id;
+    info ( int x, int y, int id ) : x(x), y(y), id(id) {}
+};
+
+bool cmp ( const info &a, const info &b )
+{
+    return a.x <= a.y;
+}
+
+
+
+int main()
+{
+    optimize();
+
+    vector < info > v;
+    vi X;
+
+    int n;
+    cin >> n;
+    for ( int i = 1; i <= n; i++ ) {
+        int x, y;
+        cin >> x >> y;
+        v.PB ( info( x, y, i ) );
+    }
+
+    sort ( all ( v ), cmp );
+    for ( auto u : v ) {
+        X.PB ( u.x );
+    }
+
+    for ( int i = 0; i < sz ( v ); i++ ) {
+        a[i+1] = v[i].y;
+        iD[a[i+1]] = i+1;
+    }
+
+    init ( 1, 1, n );
+
+
+    for ( int i = 0; i < sz ( v )-1; i++ ) {
+        int lo = lower_bound( all ( X ), v[i].y ) - X.begin();
+        nodes.clear();
+        if ( i+2 <= lo ) ask ( 1, 1, n, i+2, lo, v[i].y );
+
+
+        for ( auto u : nodes ) {
+            adj[v[i].id].PB ( u );
+        }
+    }
+
+
+    for ( int i = 1; i <= n; i++ ) {
+        cout << i << " no segment inter sects with : \n";
+        for ( auto u : adj[i] ) cout << u << " ";
+        cout << endl;
+    }
+
+
+    return 0;
+}
+
+
+/**
+Test Case :
+
+6
+9 12
+2 11
+1 3
+6 10
+5 7
+4 8
+
+**/
+
+/**
+Ans of test :
+
+1 no segment inter sects with :
+
+2 no segment inter sects with :
+6
+3 no segment inter sects with :
+5
+4 no segment inter sects with :
+5 6
+5 no segment inter sects with :
+3 5
+6 no segment inter sects with :
+3 5
+
+**/

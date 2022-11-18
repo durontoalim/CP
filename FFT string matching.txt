@@ -1,0 +1,116 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef vector<int> vi;
+
+#define endl '\n'
+#define PB push_back
+#define all(a) (a).begin(),(a).end()
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define sz(x) (int)x.size()
+
+using cd = complex<double>;
+const double PI = acos(-1);
+
+void fft(vector<cd> & a, bool invert) {
+    int n = a.size();
+
+    for (int i = 1, j = 0; i < n; i++) {
+        int bit = n >> 1;
+        for (; j & bit; bit >>= 1)
+            j ^= bit;
+        j ^= bit;
+
+        if (i < j)
+            swap(a[i], a[j]);
+    }
+
+    for (int len = 2; len <= n; len <<= 1) {
+        double ang = 2 * PI / len * (invert ? -1 : 1);
+        cd wlen(cos(ang), sin(ang));
+        for (int i = 0; i < n; i += len) {
+            cd w(1);
+            for (int j = 0; j < len / 2; j++) {
+                cd u = a[i+j], v = a[i+j+len/2] * w;
+                a[i+j] = u + v;
+                a[i+j+len/2] = u - v;
+                w *= wlen;
+            }
+        }
+    }
+
+    if (invert) {
+        for (cd & x : a)
+            x /= n;
+    }
+}
+
+vector<int> multiply(vector<int> const& a, vector<int> const& b) {
+    vector<cd> fa(a.begin(), a.end()), fb(b.begin(), b.end());
+    int n = 1;
+    while (n < a.size() + b.size())
+        n <<= 1;
+    fa.resize(n);
+    fb.resize(n);
+
+    fft(fa, false);
+    fft(fb, false);
+    for (int i = 0; i < n; i++)
+        fa[i] *= fb[i];
+    fft(fa, true);
+
+    vector<int> result(n);
+    for (int i = 0; i < n; i++)
+        result[i] = round(fa[i].real());
+    return result;
+}
+
+const int mx = 5e5+123;
+int ans[mx], n, m;
+string s, p;
+
+void solve ( char ch )
+{
+    vi a, b, c;
+    for ( auto u : s ) {
+        a.PB ( ( u == ch ) );
+    }
+
+    for ( auto u : p ) {
+        b.PB ( ( u == ch ) );
+    }
+
+    c = multiply( a, b );
+
+    for ( int i = m-1; i < n; i++ ) {
+        ans[i-m+1] += c[i];
+    }
+
+}
+
+int main()
+{
+    optimize();
+
+    cin >> s >> p;
+
+    reverse( all ( p ) );
+
+    n = sz ( s );
+    m = sz ( p );
+
+
+    for ( int i = 0; i < 26; i++ ) {
+        char c = i + 'a';
+        solve ( c );
+    }
+
+    /// m - ans[i] is hamming distance of pattern and substring of s of length |p|
+    for ( int i = 0; i <= n-m; i++ ) {
+        cout << m - ans[i] << " ";
+    }
+
+
+    return 0;
+}

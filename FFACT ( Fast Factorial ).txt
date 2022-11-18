@@ -1,0 +1,12 @@
+//for count prime factorization 1 - 5e6.Its 2 times faster then normal seive.
+//Total statement reads = 77893457
+
+for ( auto p : prime ) {
+    for ( int i = p; i <= 5e6; i += p ) {
+        int tmp = i;
+        while ( tmp > 0 && tmp % p == 0 ) {
+    
+            tmp /= p;
+        }
+    }
+}

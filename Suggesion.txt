@@ -1,0 +1,15 @@
+If you read the comments from my blog Jakube suggested me to solve from a2oj. Yes its really very good. When I became blue I have solved 90+ problems of 1700 ladder I gess. So you can also do this. And anouther thing I have done that upsolving its  really very important for improvement.
+
+So I will suggeste you to choose a ladder from a2oj and solve them as fast as you can. And participate regular cf contest and upsolve them. When you see a new algo need to solve them, learn it immediatly and solve the problem. This is my suggestion. 
+
+Another approach I will tell you. Its suggestion of delax(He was A yellow coder when he suggested me that). Delax told me - "Solve 500 problems in timus, then you will be candidate master". If you want you can also try this.
+
+And yes. If you are preparing for ICPC than you should do cf gym contest. You can start 3start gym contest. Do contest and upsolve as much as you can. And when you feel that 3star are become easy than start 4star. This approch will be better for ICPC.
+And another fact is doing cf gym contest will also improve your rating as well as knowledge.
+
+And remember Rating is not everything. For ICPC you need a lot of knowledge and a high skill for implementing heavy implementation codes.
+
+If you have any query you can ask me. I don't feel irritate.
+And Sorry for my bad English.
+
+May ALLAH give you high rating. :)

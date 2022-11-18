@@ -1,0 +1,226 @@
+import java.io.PrintWriter;
+import java.math.BigInteger;
+
+class D {
+    public static void main(String[] args) {
+
+        BigInteger a = new BigInteger( "123" );
+        BigInteger b = new BigInteger( "11" );
+
+
+        int c = a.compareTo( b );
+        // If c == 0 then A == B
+        // If c == 1 then A > B
+        // If c == -1 then A < B
+
+
+        boolean f = a.equals(b);
+        // If a == b then f = true;
+        // If a != b then f = false;
+
+
+        double k = a.signum();
+        // If a > 0 then k = 1.0
+        // If a < 0 then k = -1.0
+        // If a == 0 then k = 0
+
+
+        BigInteger SUM = a.add( b );
+        // SUM = a + b
+
+
+        BigInteger SUB = a.subtract(b);
+        // SUB = a - b
+
+
+        BigInteger MUL = a.multiply( b );
+        // MUL = a * b;
+        // Complexity : O(n^1.5) here n is digit numbers.
+
+
+        BigInteger DIV = a.divide( b );
+        // DIV = a / b;
+
+
+        BigInteger REM = a.remainder(b);
+        // REM = a mod b
+
+
+        int p = 3;
+        BigInteger pw = a.pow( p );
+        // pw = a ^ p;
+
+
+        BigInteger arr[] = a.divideAndRemainder(b);
+        // arr[0] = a / b;
+        // arr[1] = a mod b;
+
+
+        BigInteger g = a.gcd(b);
+        // g = gcd ( a, b ) log2(a)+log2(b)
+
+
+        BigInteger MOD = a.mod( b );
+        // MOD = a mod b;
+
+
+        BigInteger ABS = a.abs();
+        // ABS = |a|
+
+
+        BigInteger MAX = a.max(b);
+        // MAX = max ( a, b )
+
+
+        BigInteger MIN = a.min(b);
+        // MIN = min ( a, b );
+
+
+        BigInteger negative = a.negate();
+        // negative = a * -1;
+        // a = 123 then, negative = -123;
+
+
+        BigInteger modInv = a.modInverse(b);
+        // modInv = a^-1 mod b
+        // modInv = ( 1 / a ) mod b
+        // b must be prime
+
+
+        BigInteger power = new BigInteger( "1234" );
+        BigInteger modPw = a.modPow(power, b);
+        // modPw = ( a ^ power ) mod b;
+
+
+        BigInteger OR = a.or(b);
+        // OR = a | b;
+        // a = 3(11), b = 4(100) then OR = 111
+
+
+        BigInteger XOR = a.xor(b);
+        // XOR = a xor b;
+        // a = 3(11), b = 4(1000) then XOR = 1011
+
+
+        BigInteger AND = a.and( b );
+        // AND = a & b
+
+
+        BigInteger NOT = a.not();
+        // NOT = ~a;
+        // Here 2's complement of a.
+        // NOT = - a - 1;
+
+
+        BigInteger andNOT = a.andNot( b );
+        // andNOT = a & ( ~b )
+
+
+        int l = a.bitLength();
+        // l is the length of a in binary representation
+
+
+        BigInteger left = a.shiftLeft( p );
+        // shifts all the bits of a in left by p places.
+        // a = 3(11) after shifting left by 1 it becomes 6(110)
+        // left = p << a
+
+
+        BigInteger right = a.shiftRight( p );
+        // shifts all the bits of a in Right by p places.
+        // a = 3(11) after shifting left by 1 it becomes 1(1)
+        // right = a >> p
+
+
+        int Bit = a.bitCount();
+        // It counts the number of 1's in 2' complement of a.
+        // For positive integer it counts the number of 1's in the binary representation of a.
+
+
+        BigInteger cl = a.clearBit(p);
+        // It makes p'th bit of a, 0
+        // 6(110) clear bit 1'th position = 4 (100)
+
+
+        BigInteger fil = a.flipBit(p);
+        // Flips the p'th bit of a. Makes 1 to 0 and 0 to 1
+        // a = 3(11), p = 1 then after flip a = 1(01)
+        // a = 1(01), p = 1 then after flip a = 3(11)
+
+
+        boolean isSet = a.testBit(p);
+        // If p'th bit of a is 1 then isSet = true.
+        // Else isSet = false.
+        // a = 3(11) and p = 1 then isSet = true.
+        // a = 2(10) and p = 0 then isSet = false.
+
+
+        int pos = a.getLowestSetBit();
+        // Returns the position of right most 1.
+        // a = 8(1000) then pos = 3
+        // a = 7(0111) then pos = 0
+
+
+        boolean isPrime = a.isProbablePrime( 1 );
+        // This method returns true if this BigInteger is probably prime.
+        // And returns false if it's definitely composite.
+        // certainty always : 1
+
+
+        BigInteger prime = a.nextProbablePrime();
+        // Returns next prime of a
+        // a = 2 then prime = 3
+        // a = 3 then prime = 5
+
+
+        int hash = a.hashCode();
+        // returns Hash function of a;
+
+
+        k = a.doubleValue();
+        // Gets double value of a.
+
+
+        float fl = a.floatValue();
+        // gets float value of a.
+
+
+        int val = a.intValue();
+        //Gets integer value of a.
+
+
+        val = a.intValueExact();
+        //Gets integer value exact.
+        //If val can't contain the number(If a is greater than MAX_INT ) then it will show exception.
+
+        long valLong = a.longValue();
+        //Gets long value of a
+
+
+        valLong = a.longValueExact();
+        //Gets long value exact.
+        //If val can't contain the number (If a is greater than MAX_LONG ) then it will show exception.
+
+
+        int valShort = a.shortValue();
+        //Gets short value of a.
+
+
+        valShort = a.shortValueExact();
+        //Gets short value exact.
+        //If val can't contain the number(If a is greater than MAX_SHORT ) then it will show exception.
+
+
+        String s = a.toString();
+        // converts a to string
+
+        int givenBase = 2;
+        String sBase = a.toString( givenBase );
+        // Convert to string a on base of givenBase
+        // If a = 12 and givenBase = 2, then sBase = 1100
+        // If a = 12 and givenBase = 16, then sBase = c
+        // If a = 12 and givenBase = 8, then sBase = 14
+
+    }
+
+}

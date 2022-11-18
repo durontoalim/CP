@@ -1,0 +1,11 @@
+1)
+
+Let's consider the following interactive task. There are n (1 ≤ n ≤ 10^5) hidden integers ai, each of them from range [1, 10^18]. You are allowed to ask at most 103000 queries. In one query you can choose two integers x and y (1 ≤ x ≤ n, 1 ≤ y ≤ 10^18) and ask a question ''Is ax ≥ y?'' The task is to find the value of the greatest element in the hidden array. The checker isn't adaptive.
+
+2)
+
+You are given a tree consisting of n vertices. A number is written on each vertex; the number on vertex i is equal to ai.
+
+Let's denote the function g(x,y) as the greatest common divisor of the numbers written on the vertices belonging to the simple path from vertex x to vertex y (including these two vertices). Also let's denote dist(x,y) as the number of vertices on the simple path between vertices x and y, including the endpoints. dist(x,x)=1 for every vertex x.
+
+Your task is calculate the maximum value of dist(x,y) among such pairs of vertices that gcd(a[x],a[y])>1.

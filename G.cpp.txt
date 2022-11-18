@@ -1,0 +1,215 @@
+///   ***   ---   |||         In the name of ALLAH        |||   ---   ***   ///
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vi> vvi;
+typedef vector<vl> vvl;
+typedef pair<int,int> pii;
+typedef pair<double, double> pdd;
+typedef pair<ll, ll> pll;
+typedef vector<pii> vii;
+typedef vector<pll> vll;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+#define sz(x) (int)x.size()
+
+const double PI = acos(-1);
+const double eps = 1e-9;
+const int inf = 2000000000;
+const ll infLL = 9000000000000000000;
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define fraction() cout.unsetf(ios::floatfield); cout.precision(10); cout.setf(ios::fixed,ios::floatfield);
+#define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+
+#define dbg(args...) do {cerr << #args << " : "; faltu(args); } while(0)
+void faltu () {            cerr << endl;}
+template < typename T, typename ... hello>void faltu( T arg, const hello &... rest) {cerr << arg << ' ';faltu(rest...);}
+
+
+
+
+
+const int mx = 1e3+123;
+
+int t[mx*3][mx], prop[mx*3][mx], p[mx][mx], v[mx][mx], t1[mx*3][mx], prop1[mx*3][mx];
+bool vis[mx*3][mx], vis1[mx*3][mx];
+
+void shift (  int id, int y )
+{
+    t[id*2][y] = max ( t[id][y], t[id*2][y] );
+    t[id*2+1][y] = max ( t[id][y], t[id*2+1][y] );
+
+    prop[id*2][y] = max ( prop[id*2][y], prop[id][y] );
+    prop[id*2+1][y] = max ( prop[id*2+1][y], prop[id][y] );
+
+    prop[id][y] = -inf;
+    vis[id][y] = 0;
+}
+
+void upd ( int id, int b, int e, int i, int j, int val, int y )
+{
+    if ( b > j || e < i ) return;
+    if ( b >= i && e <= j ) {
+        t[id][y] = max ( t[id][y], val );
+        prop[id][y] = max ( prop[id][y], val );
+        vis[id][y] = 1;
+        return;
+    }
+
+    int mid = ( b + e ) >> 1;
+
+    if ( vis[id][y] ) shift ( id, y );
+
+    upd ( id*2, b, mid, i, j, val, y );
+    upd ( id*2+1, mid+1, e, i, j, val, y );
+
+    t[id][y] = max ( t[id*2][y], t[id*2+1][y] );
+}
+
+int ask ( int id, int b, int e, int i, int j, int y )
+{
+    if ( b > j || e < i ) return -inf;
+    if ( b >= i && e <= j ) return t[id][y];
+
+
+    int mid = ( b + e ) >> 1;
+
+    if ( vis[id][y] ) shift ( id, y );
+
+    int q1 = ask ( id*2, b, mid, i, j, y );
+    int q2 = ask ( id*2+1, mid+1, e, i, j, y );
+
+    return max ( q1, q2 );
+}
+
+
+void shift1 (  int id, int x )
+{
+    t1[id*2][x] = max ( t1[id][x], t1[id*2][x] );
+    t1[id*2+1][x] = max ( t1[id][x], t1[id*2+1][x] );
+
+    prop1[id*2][x] = max ( prop1[id*2][x], prop1[id][x] );
+    prop1[id*2+1][x] = max ( prop1[id*2+1][x], prop1[id][x] );
+
+    prop1[id][x] = -inf;
+    vis1[id][x] = 0;
+}
+
+void upd1 ( int id, int b, int e, int i, int j, int val, int x )
+{
+    if ( b > j || e < i ) return;
+    if ( b >= i && e <= j ) {
+        t1[id][x] = max ( t1[id][x], val );
+        prop1[id][x] = max ( prop1[id][x], val );
+        vis1[id][x] = 1;
+        return;
+    }
+
+    int mid = ( b + e ) >> 1;
+
+    if ( vis1[id][x] ) shift1 ( id, x );
+
+    upd1 ( id*2, b, mid, i, j, val, x );
+    upd1 ( id*2+1, mid+1, e, i, j, val, x );
+
+    t1[id][x] = max ( t1[id*2][x], t1[id*2+1][x] );
+}
+
+int ask1 ( int id, int b, int e, int i, int j, int x )
+{
+    if ( b > j || e < i ) return -inf;
+    if ( b >= i && e <= j ) return t1[id][x];
+
+
+    int mid = ( b + e ) >> 1;
+
+    if ( vis1[id][x] ) shift1 ( id, x );
+
+    int q1 = ask1 ( id*2, b, mid, i, j, x );
+    int q2 = ask1 ( id*2+1, mid+1, e, i, j, x );
+
+    return max ( q1, q2 );
+}
+
+
+int main() {
+    optimize();
+
+
+
+    int tt;
+    cin >> tt;
+    for ( int tc = 1; tc <= tt; tc++ ) {
+        cout << "Case " << tc << ": ";
+
+
+        for ( int i = 1; i <= 1000; i++ ) {
+            for ( int j = 1; j <= 1000; j++ ) {
+                vis[i][j] = vis1[i][j] = 0;
+                t[i][j] = t1[i][j] = prop[i][j] = prop1[i][j] = -inf;
+            }
+        }
+
+
+
+        int n, m;
+        cin >> n >> m;
+
+        for ( int i = 1; i <= n; i++ ) {
+            for ( int j = 1; j <= m; j++ ) cin >> p[i][j];
+        }
+
+        for ( int i = 1; i <= n; i++ ) {
+            for ( int j = 1; j <= m; j++ ) cin >> v[i][j];
+        }
+
+
+
+
+        for ( int i = 1; i <= n; i++ ) {
+
+            for ( int j = 1; j <= m; j++ ) {
+                int r = ask ( 1, 1, n, i, i, j );
+                int c = ask1 ( 1, 1, m, j, j, i );
+
+
+                int ans;
+                if ( i == 1 && j == 1 ) ans = v[i][j];
+                else ans = max ( r, c ) + v[i][j];
+
+                //dbg ( i, j, r, c, ans, i+p[i][j], j+p[i][j] );
+
+                if ( i == n && j == m ) {
+                    cout << ans << endl;
+
+                }
+
+                upd ( 1, 1, n, i, min ( i+p[i][j], n ), ans, j );
+                upd1 ( 1, 1, m, j, min ( j+p[i][j], m ), ans, i );
+              //  dbg ( j, j+p[i][j], ans, i );
+            }
+
+        }
+
+    }
+
+    return 0;
+}

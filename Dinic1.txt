@@ -1,0 +1,138 @@
+/**
+MaxFlow Dinic algorithm with scaling.
+Complexity : O(N * M * log(MC)), where MC is maximum edge capacity.
+For unit network : O (E*sqrt(V) )
+**/
+
+
+#include<bits/stdc++.h>
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+using namespace std;
+
+const int mx = 1212;
+
+struct Dinic {
+
+    struct edge {
+        int a, b;
+        long long c, f;
+    };
+
+
+    int n;
+    vector <edge> e;
+    int pt[mx];
+    vector < int > adj[mx];
+    long long flow = 0;
+    queue < int > q;
+    long long d[mx];
+    int lim;
+    int s, t;
+    const long long inf = 1e18;
+
+
+    Dinic(int n, int s, int t): n(n), s(s), t(t) {}
+
+    inline void addEdge(int a, int b, long long c) {
+        edge ed;
+
+        ed.a = a; ed.b = b; ed.f = 0; ed.c = c;
+        adj[a].push_back ( e.size() );
+        e.push_back ( ed );
+
+        ed.a = b; ed.b = a; ed.f = c; ed.c = c;
+        adj[b].push_back ( e.size() );
+        e.push_back ( ed );
+    }
+
+    inline bool bfs() {
+        for (int i = 1; i <= n; i++) d[i] = inf;
+
+        d[s] = 0;
+        q.push(s);
+
+        while ( !q.empty() && d[t] == inf ) {
+            int cur = q.front(); q.pop();
+            for (size_t i = 0; i < adj[cur].size(); i++) {
+                int id = adj[cur][i];
+                int to = e[id].b;
+
+                if (d[to] == inf && e[id].c - e[id].f >= lim) {
+                    d[to] = d[cur] + 1;
+                    q.push(to);
+                }
+            }
+        }
+
+        while (!q.empty()) q.pop();
+
+        return d[t] != inf;
+    }
+
+    inline bool dfs(int v, long long flow) {
+        if (flow == 0) return 0;
+        if (v == t) return 1;
+
+        for (; pt[v] < adj[v].size(); pt[v]++ ) {
+            int id = adj[v][pt[v]];
+            int to = e[id].b;
+
+
+            if ( d[to] == d[v] + 1 && e[id].c - e[id].f >= flow ) {
+                int pushed = dfs(to, flow);
+                if (pushed) {
+                    e[id].f += flow;
+                    e[id ^ 1].f -= flow;
+                    return 1;
+                }
+            }
+        }
+        return 0;
+    }
+
+    inline long long maxflow() {
+        for ( lim = (1 << 30); lim >= 1; ) {
+            if ( !bfs()) {
+                lim >>= 1;
+                continue;
+            }
+
+            for (int i = 1; i <= n; i++) pt[i] = 0;
+
+            int pushed;
+
+            while (pushed = dfs(s, lim)) {
+                flow = flow + lim;
+            }
+        }
+
+        return flow;
+    }
+
+};
+
+
+
+int main()
+{
+    int n, m, s, t;
+    cin >> n >> m >> s >> t;
+
+    Dinic dinic ( n, s, t );
+
+    for ( int i = 1; i <= m; i++ ) {
+        int u, v, w;
+        cin >> u >> v >> w;
+        dinic.addEdge( u, v, w );
+        /**
+        For undirected gaph :
+
+        dinic.addEdge( u, v, w );
+        dinic.addEdge( v, u, w );
+        **/
+    }
+
+    cout << dinic.maxflow() << endl;
+
+    return 0;
+}

@@ -1,0 +1,127 @@
+///   ***   ---   |||         In the name of ALLAH        |||   ---   ***   ///
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vi> vvi;
+typedef vector<vl> vvl;
+typedef pair<int,int> pii;
+typedef pair<double, double> pdd;
+typedef pair<ll, ll> pll;
+typedef vector<pii> vii;
+typedef vector<pll> vll;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+#define sz(x) (int)x.size()
+
+const double PI = acos(-1);
+const double eps = 1e-9;
+const int inf = 2000000000;
+const ll infLL = 9000000000000000000;
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define fraction() cout.unsetf(ios::floatfield); cout.precision(10); cout.setf(ios::fixed,ios::floatfield);
+#define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+
+#define dbg(args...) do {cerr << #args << " : "; faltu(args); } while(0)
+void faltu () {            cerr << endl;}
+template < typename T, typename ... hello>void faltu( T arg, const hello &... rest) {cerr << arg << ' ';faltu(rest...);}
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int main()
+{
+    optimize();
+
+    /// Declare multiset
+    multiset<int> s;
+
+    /// insert in multiset.
+    s.insert( 1 );
+    s.insert( 4 );
+    s.insert( 2 );
+    s.insert( 2 );
+
+    /// Print multiset size and its elements using for each loop
+    cout << s.size() << endl; /// 4
+    for ( auto u : s ) cout << u << " "; /// 1 2 2 4
+    cout << endl;
+
+    ///Print it elements using iterator
+    set<int>::iterator it;
+    for ( it = s.begin(); it != s.end(); it++ ) cout << *it << " "; /// 1 2 2 4
+    cout << endl;
+
+    /// element erase in multiset
+    s.erase( 2 );
+    cout << s.size() << endl; /// 2
+    for ( auto u : s ) cout << u << " "; /// 1 4
+    cout << endl;
+
+    s.insert( 2 );
+    s.insert( 2 );
+
+    it = s.find( 2 );
+    if ( it != s.end() ) s.erase( it );
+
+    cout << s.size() << endl; /// 3
+    for ( auto u : s ) cout << u << " "; /// 1 2 4
+    cout << endl;
+
+    s.erase( 5 );
+    cout << s.size() << endl; /// 3
+    for ( auto u : s ) cout << u << " "; /// 1 2 4
+    cout << endl;
+
+    /// another way of multiset declare and assigning a multiset into another
+    multiset<int> tmp = { 6, 6, 1, 2, 3, 4, 5 };
+    s = tmp;
+    cout << s.size() << endl; /// 7
+    for ( auto u : s ) cout << u << " "; /// 1 2 3 4 5 6 6
+    cout << endl;
+
+    /// Finding pointer where element 2 is located
+    it = s.find( 2 );
+
+    /// Checking is a element exist in multiset
+    if ( it != s.end() ) cout << "Element exist\n";
+    else cout << "Element not exist\n";
+
+    /// Counting number of occurrence's of an element of multiset
+    cout << s.count( 6 ) << endl; /// 2
+    cout << s.count( 10 ) << endl; /// 0
+
+    /// Checking is a multiset is empty of not
+    cout << s.empty() << endl; /// 0
+
+    /// Clearing full multiset
+    s.clear();
+    cout << s.empty() << endl; /// 1
+
+    /// Printing smallest element in multiset
+    s = tmp;
+    cout << *s.begin() << endl; /// 1
+
+    /// Printing largest element in a multiset
+    cout << *(--s.end() ) << endl; /// 6
+    cout << *s.rbegin() << endl; /// 6
+
+    return 0;
+}
