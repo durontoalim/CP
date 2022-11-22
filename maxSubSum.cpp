@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
- 
- 
+
+
 #define int long long
- 
+
 using namespace std;
  
 int32_t main() {
@@ -17,23 +17,23 @@ int32_t main() {
     {
         int x;
         cin>>x;
- 
         v.push_back(x);
     }
- 
     int p = v[0], s  = v[0];
  
-    int n = v.size();
-    
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < N; i++)
     {
-        s = max(v[i] , s+v[i]);
+        if(s+v[i] >= v[i]){
+            s += v[i];
+        }
+        else{
+            s = v[i];
+        }
+
         p = max(p,s);
     }
- 
+    
     cout<<p<<endl;
- 
- 
  
  
      return 0;
